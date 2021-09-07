@@ -5,9 +5,14 @@ import { TerminusModule } from '@nestjs/terminus';
 import { HealthcheckController } from './healthcheck/healthcheck.controller';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+//import configuration from './config/configuration';
 
 @Module({
-  imports: [TerminusModule, HttpModule, ConfigModule.forRoot()],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    TerminusModule,
+    HttpModule,
+  ],
   controllers: [AppController, HealthcheckController],
   providers: [AppService],
 })

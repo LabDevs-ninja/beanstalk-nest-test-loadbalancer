@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { networkInterfaces } from 'os';
 
-const { CONSUMER_IP } = process.env;
 @Injectable()
 export class AppService {
   getHello(): string {
+    const { CONSUMER_IP } = process.env;
     const nets = networkInterfaces();
     const results = Object.create(null); // Or just '{}', an empty object
     let isConsumer = false;
@@ -22,6 +22,8 @@ export class AppService {
         }
       }
     }
+    console.log(CONSUMER_IP);
+    results['consumerIP'] = CONSUMER_IP;
     results['isConsumer'] = isConsumer;
     return results;
   }
