@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { TerminusModule } from '@nestjs/terminus';
 import { HealthcheckController } from './healthcheck/healthcheck.controller';
 import { HttpModule } from '@nestjs/axios';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [TerminusModule, HttpModule],
+  imports: [TerminusModule, HttpModule, ConfigModule.forRoot()],
   controllers: [AppController, HealthcheckController],
   providers: [AppService],
 })

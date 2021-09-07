@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { networkInterfaces } from 'os';
 
+const { CONSUMER_IP } = process.env;
 @Injectable()
 export class AppService {
   getHello(): string {
@@ -13,6 +14,11 @@ export class AppService {
         if (net.family === 'IPv4' && !net.internal) {
           if (!results[name]) {
             results[name] = [];
+          }
+          console.log(net.address);
+          console.log(CONSUMER_IP);
+          if (CONSUMER_IP === net.address) {
+            results['isConsumer'].push(true);
           }
           results[name].push(net.address);
         }
