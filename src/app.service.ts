@@ -15,12 +15,11 @@ export class AppService {
           if (!results[name]) {
             results[name] = [];
           }
-          console.log(net.address);
-          console.log(CONSUMER_IP);
           if (CONSUMER_IP === net.address) {
             results['isConsumer'].push(true);
           }
           results[name].push(net.address);
+          results['CONSUMER_IP'].push(CONSUMER_IP);
         }
       }
     }
