@@ -3,10 +3,10 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - rimraf dist
+      - npm run prebuild
   build:
     commands:
-      - nest build
+      - npm run build
 
 artifacts:
   files:
