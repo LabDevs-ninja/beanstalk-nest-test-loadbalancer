@@ -7,7 +7,7 @@ export class AppService {
   getHello(): string {
     const nets = networkInterfaces();
     const results = Object.create(null); // Or just '{}', an empty object
-
+    let isConsumer = false;
     for (const name of Object.keys(nets)) {
       for (const net of nets[name]) {
         // Skip over non-IPv4 and internal (i.e. 127.0.0.1) addresses
@@ -16,14 +16,13 @@ export class AppService {
             results[name] = [];
           }
           if (CONSUMER_IP === net.address) {
-            results['isConsumer'].push(true);
+            isConsumer = true;
           }
           results[name].push(net.address);
-          results['CONSUMER_IP'].push(CONSUMER_IP);
         }
       }
     }
-
+    results['isConsumer'] = isConsumer;
     return results;
   }
 }
