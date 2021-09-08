@@ -25,7 +25,7 @@ export class AppService {
     console.log(CONSUMER_IP);
     results['consumerIP'] = CONSUMER_IP;
     results['isConsumer'] = isConsumer;
-    results['version'] = 'v1.1.2';
+    results['version'] = 'v1.1.3';
     return results;
   }
 }
